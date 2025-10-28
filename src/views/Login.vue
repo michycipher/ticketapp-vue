@@ -41,7 +41,8 @@ function handleLogin() {
 </style> -->
 
 <template>
-  <div class="max-w-md mx-auto mt-12 p-6 bg-white shadow rounded relative">
+  <Navbar />
+  <div class="max-w-md mx-auto mt-20 p-6 bg-white shadow rounded relative">
     <h2 class="text-xl font-bold mb-4">Login</h2>
     <form @submit.prevent="handleLogin">
       <div class="mb-4">
@@ -62,12 +63,16 @@ function handleLogin() {
       {{ toast.message }}
     </div>
   </div>
+
+  <Footer />
 </template>
 
 <script setup>
 import { ref } from 'vue'
 import { useMainStore } from '../store'
 import { useRouter } from 'vue-router'
+import Navbar from '../components/Navbar.vue'
+import Footer from '../components/Footer.vue';
 
 const email = ref('')
 const password = ref('')

@@ -39,7 +39,8 @@ function handleSignup() {
 </style> -->
 
 <template>
-  <div class="max-w-md mx-auto mt-12 p-6 bg-white shadow rounded relative">
+  <Navbar />
+  <div class="max-w-md mx-auto mt-12 p-6 bg-white shadow rounded">
     <h2 class="text-xl font-bold mb-4">Sign Up</h2>
     <form @submit.prevent="handleSignup">
       <div class="mb-4">
@@ -70,11 +71,14 @@ function handleSignup() {
       {{ toast.message }}
     </div>
   </div>
+  <Footer />
 </template>
 
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import Navbar from '../components/Navbar.vue'
+import Footer from '../components/Footer.vue'
 
 const fullName = ref('')
 const email = ref('')
