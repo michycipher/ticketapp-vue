@@ -35,6 +35,12 @@ This README explains what the app does, how it works, and how it meets the HNG r
 
 This app uses a mock authentication system — no real backend, just `localStorage`.
 
+### 📝 Login
+{
+  email: 'user@example.com',
+  password: 'password123'
+}
+
 ### 🔐 Signup
 
 When a user signs up, their info is saved to `localStorage` like this:
@@ -44,10 +50,4 @@ When a user signs up, their info is saved to `localStorage` like this:
   fullName: "Chux",
   email: "chux@example.com",
   password: "secret123"
-}
-
-## What Tix Can Do 
-{
-  email: 'user@example.com',
-  password: 'password123'
 }
