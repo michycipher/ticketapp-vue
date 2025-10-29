@@ -19,10 +19,13 @@ import {
 library.add(faPlane, faBolt, faLock, faCreditCard, faMobileAlt, faBullseye)
 
 const app = createApp(App)
-app.use(createPinia())
+
+const pinia = createPinia()
+app.use(pinia)
 app.use(router)
 // Initialize user session before mount
 const store = useMainStore()
 store.initSession()
+
 app.component('font-awesome-icon', FontAwesomeIcon)
 app.mount('#app')

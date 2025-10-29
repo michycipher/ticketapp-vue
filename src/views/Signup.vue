@@ -40,35 +40,85 @@ function handleSignup() {
 
 <template>
   <Navbar />
-  <main class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4">
-    <div class="max-w-md mx-auto mt-12 p-6 bg-white shadow rounded">
-      <h2 class="text-xl font-bold mb-4">Sign Up</h2>
+  <main
+    class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4"
+  >
+    <div class="w-full max-w-md p-8 bg-white shadow-lg rounded-2xl">
+      <h2 class="text-2xl font-bold text-purple -700 mb-4 text-center">
+        Create an account
+      </h2>
+
       <form @submit.prevent="handleSignup">
         <div class="mb-4">
-          <input v-model="fullName" type="text" placeholder="Full Name" class="input" />
+          <label class="block text-sm font-medium text-gray-700 mb-1">
+            Full name
+          </label>
+          <input
+            v-model="fullName"
+            type="text"
+            placeholder="Full Name"
+            class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-200"
+          />
           <p v-if="errors.fullName" class="error">{{ errors.fullName }}</p>
         </div>
 
         <div class="mb-4">
-          <input v-model="email" type="email" placeholder="Email" class="input" />
+          <label class="block text-sm font-medium text-gray-700 mb-1">
+            Email
+          </label>
+          <input
+            v-model="email"
+            type="email"
+            placeholder="Email"
+            class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-200"
+          />
           <p v-if="errors.email" class="error">{{ errors.email }}</p>
         </div>
 
         <div class="mb-4">
-          <input v-model="password" type="password" placeholder="Password" class="input" />
+          <label class="block text-sm font-medium text-gray-700 mb-1">
+            Password
+          </label>
+          <input
+            v-model="password"
+            type="password"
+            placeholder="Password"
+            class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-200"
+          />
           <p v-if="errors.password" class="error">{{ errors.password }}</p>
         </div>
 
         <div class="mb-4">
-          <input v-model="confirmPassword" type="password" placeholder="Confirm Password" class="input" />
-          <p v-if="errors.confirmPassword" class="error">{{ errors.confirmPassword }}</p>
+          <input
+            v-model="confirmPassword"
+            type="password"
+            placeholder="Confirm Password"
+            class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-200"
+          />
+          <p v-if="errors.confirmPassword" class="error">
+            {{ errors.confirmPassword }}
+          </p>
         </div>
 
-        <button class="btn mt-4">Sign Up</button>
+        <button
+          class="w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 focus:outline-none"
+        >
+          Sign Up
+        </button>
+        <p class="text-center text-sm text-gray-600 mt-4">
+          Already have an account?
+          <a href="/auth/login" class="text-purple-600 font-semibold">
+            Login
+          </a>
+        </p>
       </form>
 
       <!-- Toast Notification -->
-      <div v-if="toast.message" :class="['toast', toast.type]" class="absolute top-4 right-4">
+      <div
+        v-if="toast.message"
+        :class="['toast', toast.type]"
+        class="absolute top-4 right-4"
+      >
         {{ toast.message }}
       </div>
     </div>
@@ -78,50 +128,55 @@ function handleSignup() {
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
-import Navbar from '../components/Navbar.vue'
-import Footer from '../components/Footer.vue'
+import { ref } from "vue";
+import { useRouter } from "vue-router";
+import Navbar from "../components/Navbar.vue";
+import Footer from "../components/Footer.vue";
 
-const fullName = ref('')
-const email = ref('')
-const password = ref('')
-const confirmPassword = ref('')
-const errors = ref({})
-const toast = ref({ message: '', type: '' })
-const router = useRouter()
+const fullName = ref("");
+const email = ref("");
+const password = ref("");
+const confirmPassword = ref("");
+const errors = ref({});
+const toast = ref({ message: "", type: "" });
+const router = useRouter();
 
-function showToast(message, type = 'success') {
-  toast.value = { message, type }
-  setTimeout(() => (toast.value = { message: '', type: '' }), 3000)
+function showToast(message, type = "success") {
+  toast.value = { message, type };
+  setTimeout(() => (toast.value = { message: "", type: "" }), 3000);
 }
 
 function handleSignup() {
-  errors.value = {}
+  errors.value = {};
 
-  if (!fullName.value) errors.value.fullName = 'Full name is required.'
-  if (!email.value) errors.value.email = 'Email is required.'
-  if (!password.value) errors.value.password = 'Password is required.'
-  if (!confirmPassword.value) errors.value.confirmPassword = 'Please confirm your password.'
-  if (password.value && confirmPassword.value && password.value !== confirmPassword.value) {
-    errors.value.confirmPassword = 'Passwords do not match.'
+  if (!fullName.value) errors.value.fullName = "Full name is required.";
+  if (!email.value) errors.value.email = "Email is required.";
+  if (!password.value) errors.value.password = "Password is required.";
+  if (!confirmPassword.value)
+    errors.value.confirmPassword = "Please confirm your password.";
+  if (
+    password.value &&
+    confirmPassword.value &&
+    password.value !== confirmPassword.value
+  ) {
+    errors.value.confirmPassword = "Passwords do not match.";
   }
 
   if (Object.keys(errors.value).length > 0) {
-    showToast('Please fix the errors below.', 'error')
-    return
+    showToast("Please fix the errors below.", "error");
+    return;
   }
 
   const user = {
     fullName: fullName.value,
     email: email.value,
-  }
+  };
 
-  localStorage.setItem('ticketapp_session', 'mock_token')
-  localStorage.setItem('ticketapp_user', JSON.stringify(user))
+  localStorage.setItem("ticketapp_session", "mock_token");
+  localStorage.setItem("ticketapp_user", JSON.stringify(user));
 
-  showToast('Signup successful!', 'success')
-  setTimeout(() => router.push('/dashboard'), 1000)
+  showToast("Signup successful!", "success");
+  setTimeout(() => router.push("/dashboard"), 1000);
 }
 </script>
 
