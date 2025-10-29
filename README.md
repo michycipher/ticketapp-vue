@@ -4,7 +4,7 @@
 
 Welcome to Tix! This is a Vue 3 project built for the HNG Internship. It’s a ticket booking and support app that lets users sign up, log in, manage tickets, and view stats — all in a clean, responsive interface.
 
-This README explains what the app does, how it works, and how it meets the HNG requirements. It also includes a breakdown of the mock API logic and how to inspect stored user data in your browser Network.
+This README explains what the app does and how it works. It also includes a breakdown of the mock API logic and how to inspect stored user data in your browser Network.
 
 ---
 
@@ -33,9 +33,13 @@ This README explains what the app does, how it works, and how it meets the HNG r
 
 ## 🧠 How Authentication Works (Mock API)
 
-This app uses a mock authentication system — no real backend, just `localStorage`.
+This app uses a **mock authentication system** — no real backend, just `localStorage`.
 
 ### 📝 Login
+
+To log in, use the following mock credentials:
+
+```js
 {
   email: 'user@example.com',
   password: 'password123'
