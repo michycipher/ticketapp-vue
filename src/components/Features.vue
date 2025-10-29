@@ -1,7 +1,7 @@
 <template>
   <section class="bg-gray-50 py-24">
     <div class="max-w-[1440px] mx-auto px-4">
-      <div class="text-center mb-16">
+      <div class="text-center my-16">
         <h2 class="text-4xl font-extrabold text-gray-900 mb-4">
           Why Choose Tix?
         </h2>

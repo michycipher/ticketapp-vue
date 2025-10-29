@@ -5,6 +5,9 @@ export const useMainStore = defineStore('main', {
     user: null,
     tickets: [],
   }),
+  getters: {
+    isAuth: (state) => !!state.user,
+  },
   actions: {
     login(email, password) {
       if (email === 'user@example.com' && password === 'password123') {
@@ -17,6 +20,10 @@ export const useMainStore = defineStore('main', {
     logout() {
       localStorage.removeItem('ticketapp_session')
       this.user = null
+    },
+     initSession() {
+      const session = localStorage.getItem('ticketapp_session')
+      this.user = session ? JSON.parse(session) : null
     },
     loadTickets() {
       const data = localStorage.getItem('tickets')

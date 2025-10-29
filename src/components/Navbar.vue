@@ -22,6 +22,7 @@
             Logout
           </button>
         </template>
+
         <template v-else>
           <router-link
             to="/auth/login"
@@ -41,19 +42,27 @@
 
 <script setup>
 import { useRouter, useRoute } from "vue-router";
-import { ref, watchEffect } from "vue";
+// import { ref, watchEffect } from "vue";
+import { useMainStore } from '../store'
+import { storeToRefs } from "pinia";
 
 const router = useRouter();
-const route = useRoute();
-const isAuth = ref(false);
+// const route = useRoute();
+// const isAuth = ref(false);
+const store = useMainStore()
+const { isAuth } = storeToRefs(store)
 
-watchEffect(() => {
-  isAuth.value = !!localStorage.getItem("ticketapp_session");
-});
+// watchEffect(() => {
+//   isAuth.value = !!localStorage.getItem("ticketapp_session");
+// });
 
+// function logout() {
+//   localStorage.removeItem("ticketapp_session");
+//   router.push("/");
+// }
 function logout() {
-  localStorage.removeItem("ticketapp_session");
-  router.push("/");
+  store.logout()
+  router.push('/')
 }
 </script>
 
