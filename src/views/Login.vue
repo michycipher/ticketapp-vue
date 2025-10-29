@@ -42,8 +42,9 @@ function handleLogin() {
 
 <template>
   <Navbar />
+  <main class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4">
   <div class="max-w-md mx-auto mt-20 p-6 bg-white shadow rounded relative">
-    <h2 class="text-xl font-bold mb-4">Login</h2>
+    <h2 class="text-xl font-bold mb-4">Welcome Back</h2>
     <form @submit.prevent="handleLogin">
       <div class="mb-4">
         <input v-model="email" type="email" placeholder="Email" class="input" />
@@ -62,7 +63,8 @@ function handleLogin() {
     <div v-if="toast.message" :class="['toast', toast.type]" class="absolute top-4 right-4">
       {{ toast.message }}
     </div>
-  </div>
+  </div>   
+  </main>
 
   <Footer />
 </template>

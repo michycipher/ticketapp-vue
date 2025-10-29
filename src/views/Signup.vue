@@ -40,37 +40,40 @@ function handleSignup() {
 
 <template>
   <Navbar />
-  <div class="max-w-md mx-auto mt-12 p-6 bg-white shadow rounded">
-    <h2 class="text-xl font-bold mb-4">Sign Up</h2>
-    <form @submit.prevent="handleSignup">
-      <div class="mb-4">
-        <input v-model="fullName" type="text" placeholder="Full Name" class="input" />
-        <p v-if="errors.fullName" class="error">{{ errors.fullName }}</p>
+  <main class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4">
+    <div class="max-w-md mx-auto mt-12 p-6 bg-white shadow rounded">
+      <h2 class="text-xl font-bold mb-4">Sign Up</h2>
+      <form @submit.prevent="handleSignup">
+        <div class="mb-4">
+          <input v-model="fullName" type="text" placeholder="Full Name" class="input" />
+          <p v-if="errors.fullName" class="error">{{ errors.fullName }}</p>
+        </div>
+
+        <div class="mb-4">
+          <input v-model="email" type="email" placeholder="Email" class="input" />
+          <p v-if="errors.email" class="error">{{ errors.email }}</p>
+        </div>
+
+        <div class="mb-4">
+          <input v-model="password" type="password" placeholder="Password" class="input" />
+          <p v-if="errors.password" class="error">{{ errors.password }}</p>
+        </div>
+
+        <div class="mb-4">
+          <input v-model="confirmPassword" type="password" placeholder="Confirm Password" class="input" />
+          <p v-if="errors.confirmPassword" class="error">{{ errors.confirmPassword }}</p>
+        </div>
+
+        <button class="btn mt-4">Sign Up</button>
+      </form>
+
+      <!-- Toast Notification -->
+      <div v-if="toast.message" :class="['toast', toast.type]" class="absolute top-4 right-4">
+        {{ toast.message }}
       </div>
-
-      <div class="mb-4">
-        <input v-model="email" type="email" placeholder="Email" class="input" />
-        <p v-if="errors.email" class="error">{{ errors.email }}</p>
-      </div>
-
-      <div class="mb-4">
-        <input v-model="password" type="password" placeholder="Password" class="input" />
-        <p v-if="errors.password" class="error">{{ errors.password }}</p>
-      </div>
-
-      <div class="mb-4">
-        <input v-model="confirmPassword" type="password" placeholder="Confirm Password" class="input" />
-        <p v-if="errors.confirmPassword" class="error">{{ errors.confirmPassword }}</p>
-      </div>
-
-      <button class="btn mt-4">Sign Up</button>
-    </form>
-
-    <!-- Toast Notification -->
-    <div v-if="toast.message" :class="['toast', toast.type]" class="absolute top-4 right-4">
-      {{ toast.message }}
     </div>
-  </div>
+  </main>
+
   <Footer />
 </template>
 
@@ -126,18 +129,23 @@ function handleSignup() {
 .input {
   @apply block w-full p-2 border rounded;
 }
+
 .btn {
   @apply bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600;
 }
+
 .error {
   @apply text-red-500 text-sm mt-1;
 }
+
 .toast {
   @apply px-4 py-2 rounded shadow-lg text-white;
 }
+
 .toast.success {
   @apply bg-green-500;
 }
+
 .toast.error {
   @apply bg-red-500;
 }

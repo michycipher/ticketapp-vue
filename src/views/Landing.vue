@@ -11,8 +11,8 @@
         class="absolute bottom-[10px] left-[-150px] w-[250px] h-[250px] bg-white opacity-5 rounded-full"
       ></div>
 
-      <div class="container relative text-center z-10">
-        <h1 class="text-5xl font-extrabold mb-6 leading-tight">
+      <div class="container relative text-center z-10 pt-5 px-6">
+        <h1 class="md:text-6xl text-3xl font-extrabold my-6 leading-tight">
           Book Anything. Go Anywhere.
         </h1>
         <p class="text-xl mb-10 opacity-95">
