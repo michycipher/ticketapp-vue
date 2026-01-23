@@ -33,7 +33,7 @@ This README explains what the app does and how it works. It also includes a brea
 
 ## 🧠 How Authentication Works (Mock API)
 
-This app uses a **mock authentication system** — no real backend, just `localStorage`.
+This app uses a **mock authentication system** just `localStorage`.
 
 ### 📝 Login
 
